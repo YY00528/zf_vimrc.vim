@@ -1177,7 +1177,7 @@ if 1 " custom key mapping
     nnoremap ZX :wa<cr>:bufdo bd<cr>
     nnoremap cx :bd!<cr>
     nnoremap CX :bufdo bd!<cr>
-    nnoremap x :bd<cr>
+    nnoremap x :silent! :bd<cr>
     command! W w !sudo tee % > /dev/null
 
     nnoremap WH <c-w>h
