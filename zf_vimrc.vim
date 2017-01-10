@@ -539,8 +539,8 @@ if g:zf_no_plugin!=1
                 let &splitright=splitright_old
                 execute "normal! \<c-w>l"
             endfunction
-            command! -range Diff call ZF_Plugin_linediff_Diff(<line1>, <line2>)
-            command! DiffCancel execute "LinediffReset!"
+            command! -range LDiff call ZF_Plugin_linediff_Diff(<line1>, <line2>)
+            command! LDiffCancel execute "LinediffReset!"
             function! ZF_Plugin_linediff_DiffSave()
                 execute "normal! \<c-w>h"
                 update
@@ -550,7 +550,7 @@ if g:zf_no_plugin!=1
                 redraw!
                 echo 'diff updated'
             endfunction
-            command! -bang DiffSave call ZF_Plugin_linediff_DiffSave()
+            command! -bang LDiffSave call ZF_Plugin_linediff_DiffSave()
         endif
         " ==================================================
         if !exists("g:plugin_matchit_zip")
