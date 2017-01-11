@@ -532,25 +532,57 @@ if g:zf_no_plugin!=1
             Plugin 'AndrewRadev/linediff.vim'
             let g:linediff_first_buffer_command='new'
             let g:linediff_second_buffer_command='vertical new'
+
             function! ZF_Plugin_linediff_Diff(line1, line2)
                 let splitright_old=&splitright
                 set splitright
                 call linediff#Linediff(a:line1, a:line2)
                 let &splitright=splitright_old
-                execute "normal! \<c-w>l"
+                if &diff == 1
+                    execute "normal! \<c-w>l"
+                endif
             endfunction
-            command! -range LDiff call ZF_Plugin_linediff_Diff(<line1>, <line2>)
-            command! LDiffCancel execute "LinediffReset!"
-            function! ZF_Plugin_linediff_DiffSave()
-                execute "normal! \<c-w>h"
-                update
-                execute "normal! \<c-w>l"
-                update
-                bd
+            command! -range LinediffBeginWrap call ZF_Plugin_linediff_Diff(<line1>, <line2>)
+            xnoremap ZD :LinediffBeginWrap<cr>
+
+            function! ZF_Plugin_linediff_DiffExit()
+                while 1
+                    if &diff != 1
+                        break
+                    endif
+
+                    execute "normal! \<c-w>h"
+                    let modified=&modified
+                    execute "normal! \<c-w>l"
+                    let modified=(modified||&modified)
+                    if modified != 1
+                        break
+                    endif
+
+                    echo "diff updated, save?"
+                    echo "  (y)es"
+                    echo "  (n)o"
+                    echo "choose: "
+                    let cmd=getchar()
+                    if cmd != char2nr('y')
+                        break
+                    endif
+
+                    execute "normal! \<c-w>h"
+                    update
+                    execute "normal! \<c-w>l"
+                    update
+                    bd
+                    redraw!
+                    echo 'diff updated'
+                    return
+                endwhile
+
+                execute "LinediffReset!"
                 redraw!
-                echo 'diff updated'
+                echo "diff canceled"
             endfunction
-            command! -bang LDiffSave call ZF_Plugin_linediff_DiffSave()
+            nnoremap ZD :call ZF_Plugin_linediff_DiffExit()<cr>
         endif
         " ==================================================
         if !exists("g:plugin_matchit_zip")
