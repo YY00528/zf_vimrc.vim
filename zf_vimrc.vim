@@ -768,9 +768,8 @@ if g:zf_no_plugin!=1
             let g:Vimim_map='no-gi'
             let g:Vimim_cloud=-1
             let g:Vimim_punctuation=0
-            nnoremap CN i<C-R>=g:Vimim_chinese()<CR><Esc>l
-            nnoremap <c-d> i<C-R>=g:Vimim_chinese()<CR><Esc>l
-            inoremap <c-d> <C-R>=g:Vimim_chinese()<CR>
+            nnoremap ;; i<C-R>=g:Vimim_chinese()<CR><Esc>l
+            inoremap ;; <C-R>=g:Vimim_chinese()<CR>
         endif
         " ==================================================
         if !exists("g:plugin_wildfire_vim")
