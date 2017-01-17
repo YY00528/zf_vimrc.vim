@@ -831,10 +831,6 @@ if g:zf_no_plugin!=1
             Plugin 'elzr/vim-json'
             let g:vim_json_syntax_conceal=0
             nnoremap <leader>cf :call ZF_Formater()<cr>
-            autocmd FileType markdown,ghmarkdown
-                        \ if getfsize(expand(@%)) <= 0|
-                        \     call ZF_FormaterMarkdownInsertTocStyle()|
-                        \ endif
         endif
         " ==================================================
         if !exists("g:plugin_ZFIndentMove_vim")
