@@ -56,6 +56,7 @@ if 1 " global settings
     set wildignore+=*/_build/*,*/build/*
     set wildignore+=*/build/*,*/build-*/*
     set wildignore+=*/bin/*,*/gen/*,*/lib/*,*/libs/*,*/obj/*
+    set wildignore+=*/_repo/*
 
     let g:zf_exclude_init="___dummy___"
 
@@ -79,6 +80,7 @@ if 1 " global settings
     let g:zf_exclude_build_dir.=",_build,.build"
     let g:zf_exclude_build_dir.=",build,build-*"
     let g:zf_exclude_build_dir.=",bin,gen,lib,libs,obj"
+    let g:zf_exclude_build_dir.=",_repo"
 
     let g:zf_exclude_media=""
     let g:zf_exclude_media.=",*.jpg,*.jpeg,*.png,*.bmp,*.gif,*.webp"
@@ -1579,6 +1581,8 @@ if 1 " plugin themes
         highlight EasyMotionTarget2Second ctermbg=NONE ctermfg=White
         highlight EasyMotionShade guibg=NONE guifg=DarkRed
         highlight EasyMotionShade ctermbg=NONE ctermfg=DarkRed
+        highlight EasyMotionMoveHL guibg=NONE guifg=DarkRed
+        highlight EasyMotionMoveHL ctermbg=NONE ctermfg=DarkRed
     endif
 endif " plugin themes
 
