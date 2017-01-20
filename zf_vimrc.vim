@@ -271,8 +271,8 @@ if g:zf_no_plugin!=1
                 if winnr() >= 3
                     execute ":q"
                     nnoremap <buffer> q :DirDiffQuit<cr>
-                    nnoremap <buffer> o :DirDiffOpen<cr><c-w>k<c-w>l
-                    nnoremap <buffer> <cr> :DirDiffOpen<cr><c-w>k<c-w>l
+                    nnoremap <buffer> o :DirDiffOpen<cr><c-w>k<c-w>l10<c-w>+
+                    nnoremap <buffer> <cr> :DirDiffOpen<cr><c-w>k<c-w>l10<c-w>+
                     execute "normal! 30\<c-w>-"
                     execute "normal! \<c-w>k\<c-w>l"
                 endif
