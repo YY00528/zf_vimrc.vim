@@ -768,10 +768,13 @@ if g:zf_no_plugin!=1
         if g:plugin_vimim==1
             Plugin 'ZSaberLv0/VimIM'
             let g:Vimim_map='no-gi'
-            let g:Vimim_cloud='sougou'
+            let g:Vimim_cloud='baidu'
             let g:Vimim_punctuation=0
-            nnoremap ;; i<C-R>=g:Vimim_chinese()<CR><Esc>l
-            inoremap ;; <C-R>=g:Vimim_chinese()<CR>
+            let g:Vimim_toggle='pinyin,'.g:Vimim_cloud
+            nnoremap <silent> ;; i<C-R>=g:Vimim_chinese()<CR><Esc>l
+            inoremap <unique> ;; <C-R>=g:Vimim_chinese()<CR>
+            nnoremap <silent> ;: i<C-R>=g:Vimim_onekey()<CR><Esc>l
+            inoremap <silent> ;: <C-R>=g:Vimim_onekey()<CR>
         endif
         " ==================================================
         if !exists("g:plugin_wildfire_vim")
