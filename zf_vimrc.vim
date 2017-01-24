@@ -1397,7 +1397,7 @@ if 1 " common settings
     set encoding=utf-8
     set termencoding=utf-8
     set fileencoding=utf-8
-    set fileencodings=utf-8,ucs-bom,chinese,latin1
+    set fileencodings=utf-8,ucs-bom,chinese
     " search
     set ignorecase
     set smartcase
