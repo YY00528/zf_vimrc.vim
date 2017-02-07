@@ -1153,6 +1153,7 @@ if 1 " custom key mapping
 
     nmap zg; zg}
     nmap z; z}
+    xmap zg; zg}
     xmap z; z}
     " go to define
     nnoremap zj <c-]>
