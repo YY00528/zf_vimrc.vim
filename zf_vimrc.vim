@@ -286,41 +286,24 @@ if g:zf_no_plugin!=1
         endif
         if g:plugin_vim_easy_align==1
             Plugin 'junegunn/vim-easy-align'
-            xmap <leader>ca :EasyAlign/\v/<left>
-            let g:easy_align_delimiters={}
-            let g:easy_align_delimiters['\'] = {
-                        \     'pattern': '^[ \t]*\\\|\\$'
-                        \ }
-            let g:easy_align_delimiters['/'] = {
-                        \     'pattern': '//\+\|/\*[\*<]*\|\*/'
-                        \ }
-            let g:easy_align_delimiters[')'] = {
-                        \     'pattern':       '[()]',
-                        \     'left_margin':   0,
-                        \     'right_margin':  0,
-                        \     'stick_to_left': 0
-                        \ }
-            let g:easy_align_delimiters[']'] = {
-                        \     'pattern':       '[\[\]]',
-                        \     'left_margin':   0,
-                        \     'right_margin':  0,
-                        \     'stick_to_left': 0
-                        \ }
-            let g:easy_align_delimiters['}'] = {
-                        \     'pattern':       '[{}]',
-                        \     'left_margin':   0,
-                        \     'right_margin':  0,
-                        \     'stick_to_left': 0
-                        \ }
-            let g:easy_align_delimiters['>'] = {
-                        \     'pattern':       '[<>]',
-                        \     'left_margin':   0,
-                        \     'right_margin':  0,
-                        \     'stick_to_left': 0
-                        \ }
-            let g:easy_align_delimiters['<'] = {
-                        \     'pattern': '>>\|=>\|>'
-                        \ }
+            function! ZF_Plugin_EasyAlign_regexFix(param)
+                let param = substitute(a:param, '\\/', '_zf_slash_', 'g')
+                let regexp = substitute(substitute(param, '^[^/]*/\(\\v\)*', '', 'g'), '/.*', '', 'g')
+                let option = substitute(param, '^[^/]*/[^/]*/', '', 'g')
+                if empty(regexp) || regexp == param || option == param
+                    return a:param
+                endif
+                try
+                    let regexp = E2v(regexp)
+                catch
+                    return a:param
+                endtry
+                let param = '/' . regexp . '/' . option
+                let param = substitute(param, '_zf_slash_', '/', 'g')
+                return param
+            endfunction
+            command! -nargs=* -range -bang ZFEasyAlign <line1>,<line2>call easy_align#align('<bang>' == '!', 0, '', ZF_Plugin_EasyAlign_regexFix(<q-args>))
+            xmap <leader>ca :ZFEasyAlign /\v/<left>
         endif
         " ==================================================
         if !exists("g:plugin_vim_easygrep")
