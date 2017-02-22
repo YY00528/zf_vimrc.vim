@@ -719,13 +719,13 @@ if g:zf_no_plugin!=1
             nmap RC <plug>CSurround
             xmap r <plug>VSurround
             xmap R <plug>VgSurround
-            let g:surround_67="/* \r */"
-            let g:surround_99="/* \r */"
-            let g:surround_80="<?php \r ?>"
-            let g:surround_112="<?php \r ?>"
-            let g:surround_88="<!-- \r -->"
-            let g:surround_120="<!-- \r -->"
-            let g:surround_126="```\r```"
+            let g:surround_67="/* \r */" " C
+            let g:surround_99="/* \r */" " c
+            let g:surround_80="<?php \r ?>" " P
+            let g:surround_112="<?php \r ?>" " p
+            let g:surround_88="<!-- \r -->" " X
+            let g:surround_120="<!-- \r -->" " x
+            let g:surround_126="```\r```" " ~
         endif
         " ==================================================
         if !exists("g:plugin_tagbar")
