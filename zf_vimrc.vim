@@ -665,7 +665,6 @@ if g:zf_no_plugin!=1
             let g:nerdtree_tabs_no_startup_for_diff=1
 
             Plugin 'ivalkeen/nerdtree-execute'
-            Plugin 'ZSaberLv0/nerdtree_menu_copynode_windows'
             Plugin 'ZSaberLv0/nerdtree_menu_copypath'
             Plugin 'ZSaberLv0/nerdtree_menu_quit'
         endif
