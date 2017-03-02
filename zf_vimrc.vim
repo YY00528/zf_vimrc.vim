@@ -428,7 +428,8 @@ if g:zf_no_plugin!=1
             Plugin 'easymotion/vim-easymotion'
             let g:EasyMotion_do_mapping=0
             let g:EasyMotion_smartcase=1
-            let g:EasyMotion_keys='asdghklqwertyuiopzxcvbnmjf'
+            let g:EasyMotion_use_upper=1
+            let g:EasyMotion_keys='ASDGHKLQWERTYUIOPZXCVBNMFJ'
             nmap s <plug>(easymotion-s)
             xmap s <plug>(easymotion-s)
             nmap S <plug>(easymotion-sol-bd-jk)
@@ -1562,14 +1563,12 @@ if 1 " plugin themes
     if exists("g:plugin_vim_easymotion") && g:plugin_vim_easymotion==1
         highlight EasyMotionTarget guibg=NONE guifg=White
         highlight EasyMotionTarget ctermbg=NONE ctermfg=White
-        highlight EasyMotionTarget2First guibg=NONE guifg=White
-        highlight EasyMotionTarget2First ctermbg=NONE ctermfg=White
-        highlight EasyMotionTarget2Second guibg=NONE guifg=White
-        highlight EasyMotionTarget2Second ctermbg=NONE ctermfg=White
+        highlight link EasyMotionTarget2First EasyMotionTarget
+        highlight link EasyMotionTarget2Second EasyMotionTarget
         highlight EasyMotionShade guibg=NONE guifg=DarkRed
         highlight EasyMotionShade ctermbg=NONE ctermfg=DarkRed
-        highlight EasyMotionMoveHL guibg=NONE guifg=DarkRed
-        highlight EasyMotionMoveHL ctermbg=NONE ctermfg=DarkRed
+        highlight link EasyMotionIncSearch EasyMotionShade
+        highlight link EasyMotionMoveHL EasyMotionShade
     endif
 endif " plugin themes
 
