@@ -1442,20 +1442,18 @@ if 1 " common settings
     set selectmode=mouse,key
     set mouse=a
     " disable italic fonts
-    if !exists("g:zf_disable_italic") || g:zf_disable_italic!=1
-        function! ZF_Setting_DisableItalic()
-            let his = ''
-            redir => his
-            silent highlight
-            redir END
-            let his = substitute(his, '\n\s\+', ' ', 'g')
-            for line in split(his, "\n")
-                if line !~ ' links to ' && line !~ ' cleared$'
-                    execute 'hi' substitute(substitute(line, ' xxx ', ' ', ''), 'italic', 'none', 'g')
-                endif
-            endfor
-        endfunction
-    endif
+    function! ZF_Setting_DisableItalic()
+        let his = ''
+        redir => his
+        silent highlight
+        redir END
+        let his = substitute(his, '\n\s\+', ' ', 'g')
+        for line in split(his, "\n")
+            if line !~ ' links to ' && line !~ ' cleared$'
+                execute 'hi' substitute(substitute(line, ' xxx ', ' ', ''), 'italic', 'none', 'g')
+            endif
+        endfor
+    endfunction
     augroup ZF_setting_disable_italic
         call ZF_Setting_DisableItalic()
         autocmd!
@@ -1495,9 +1493,16 @@ if 1 " common settings
     set complete=.,w,b,u,t
     set omnifunc=syntaxcomplete#Complete
     " fold
-    set foldminlines=0
-    set foldlevel=128
-    set foldmethod=manual
+    function! ZF_setting_fold_action()
+        set foldminlines=0
+        set foldlevel=128
+        set foldmethod=manual
+    endfunction
+    augroup ZF_setting_fold
+        call ZF_setting_fold_action()
+        autocmd!
+        autocmd FileType,BufNewFile,BufReadPost * call ZF_setting_fold_action()
+    augroup END
     " diff
     set diffopt=filler,context:200
     " themes
