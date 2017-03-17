@@ -43,21 +43,6 @@ if 1 " global settings
     endif
 
     " global ignore
-    set wildignore=
-    " common
-    set wildignore+=*/.svn/*,*/.git/*,*/.hg/*
-    set wildignore+=tags,.vim_tags
-    set wildignore+=*.swp
-    " tmp dir
-    set wildignore+=*/_cache/*,*/.cache/*
-    set wildignore+=*/_tmp/*,*/.tmp/*
-    " build dir
-    set wildignore+=*/_release/*,*/.release/*
-    set wildignore+=*/_build/*,*/build/*
-    set wildignore+=*/build/*,*/build-*/*
-    set wildignore+=*/bin/*,*/gen/*,*/lib/*,*/libs/*,*/obj/*
-    set wildignore+=*/_repo/*
-
     let g:zf_exclude_init="___dummy___"
 
     let g:zf_exclude_common=""
@@ -83,8 +68,15 @@ if 1 " global settings
     let g:zf_exclude_build_dir.=",_repo"
 
     let g:zf_exclude_media=""
-    let g:zf_exclude_media.=",*.jpg,*.jpeg,*.png,*.bmp,*.gif,*.webp"
+    let g:zf_exclude_media.=",*.ico,*.jpg,*.jpeg,*.png,*.bmp,*.gif,*.webp"
     let g:zf_exclude_media.=",*.mp2,*.mp3,*.wav,*.ogg"
+
+    let g:zf_exclude_all=g:zf_exclude_init
+    let g:zf_exclude_all.=g:zf_exclude_common
+    let g:zf_exclude_all.=g:zf_exclude_tmp_dir
+    let g:zf_exclude_all.=g:zf_exclude_build
+    let g:zf_exclude_all.=g:zf_exclude_build_dir
+    let g:zf_exclude_all.=g:zf_exclude_media
 
     " git info
     if !exists("g:zf_git_user_email")
@@ -316,12 +308,7 @@ if g:zf_no_plugin!=1
             let g:EasyGrepAllOptionsInExplorer=1
             let g:EasyGrepCommand=1
             let g:EasyGrepPerlStyle=1
-            let g:EasyGrepFilesToExclude=g:zf_exclude_init
-            let g:EasyGrepFilesToExclude.=g:zf_exclude_common
-            let g:EasyGrepFilesToExclude.=g:zf_exclude_tmp_dir
-            let g:EasyGrepFilesToExclude.=g:zf_exclude_build
-            let g:EasyGrepFilesToExclude.=g:zf_exclude_build_dir
-            let g:EasyGrepFilesToExclude.=g:zf_exclude_media
+            let g:EasyGrepFilesToExclude=g:zf_exclude_all
             let g:EasyGrepReplaceWindowMode=2
             let g:EasyGrepDisableCmdParam=1
 
@@ -1441,6 +1428,15 @@ if 1 " common settings
     set sidescrolloff=5
     set selectmode=mouse,key
     set mouse=a
+    " wildignore
+    function! ZF_Setting_wildignore(pattern)
+        let pattern = split(a:pattern, ',')
+        for item in pattern
+            execute 'set wildignore+=' . item
+            execute 'set wildignore+=*/' . item . '/*'
+        endfor
+    endfunction
+    call ZF_Setting_wildignore(g:zf_exclude_all)
     " disable italic fonts
     function! ZF_Setting_DisableItalic()
         let his = ''
