@@ -1490,7 +1490,7 @@ if 1 " common settings
     inoremap <expr> <c-p> pumvisible() ? '<c-p>' : '<c-p><c-r>=pumvisible() ? "\<lt>Up>" : ""<cr>'
     inoremap <expr> <c-n> pumvisible() ? '<c-n>' : '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
     set completeopt=menuone,longest
-    set complete=.,w,b,u,t
+    set complete=.,w,b,u,k,t
     set omnifunc=syntaxcomplete#Complete
     " fold
     function! ZF_setting_fold_action()
