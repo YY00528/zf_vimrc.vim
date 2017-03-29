@@ -804,6 +804,8 @@ if g:zf_no_plugin!=1
         if g:plugin_ZFFormater_vim==1
             Plugin 'ZSaberLv0/ZFVimFormater'
             Plugin 'elzr/vim-json'
+            Plugin 'Chiel92/vim-autoformat'
+            Plugin 'rhysd/vim-clang-format'
             let g:vim_json_syntax_conceal=0
             nnoremap <leader>cf :call ZF_Formater()<cr>
         endif
