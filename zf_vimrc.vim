@@ -509,7 +509,7 @@ if g:zf_no_plugin!=1
             function! ZF_Plugin_linediff_Diff(line1, line2)
                 let splitright_old=&splitright
                 set splitright
-                call linediff#Linediff(a:line1, a:line2)
+                call linediff#Linediff(a:line1, a:line2, {})
                 let &splitright=splitright_old
                 if &diff == 1
                     execute "normal! \<c-w>l"
