@@ -1239,7 +1239,7 @@ if 1 " custom key mapping
     function! ZF_Setting_VimMacroMap()
         nnoremap Q :call ZF_Setting_VimMacroBegin(0)<cr>
         nnoremap zQ :call ZF_Setting_VimMacroBegin(1)<cr>
-        nnoremap cQ :let @z='let @m="' . @m . '"'<cr>q:"zgP
+        nnoremap cQ :let @t='let @m="' . @m . '"'<cr>q:"tgP
         nmap M @m
     endfunction
     function! ZF_Setting_VimMacroBegin(isAppend)
@@ -1283,9 +1283,9 @@ if 1 " custom key mapping
         nnoremap / /\v
         nnoremap ? :M/
         nnoremap <leader>vr :.,$S//gec<left><left><left><left>
-        xnoremap <leader>vr "zy:.,$S/<c-r>z//gec<left><left><left><left>
+        xnoremap <leader>vr "ty:.,$S/<c-r>t//gec<left><left><left><left>
         nnoremap <leader>zr :.,$S//gec<left><left><left><left>\<<c-r><c-w>\>/
-        xnoremap <leader>zr "zy:.,$S/\<<c-r>z\>//gec<left><left><left><left>
+        xnoremap <leader>zr "ty:.,$S/\<<c-r>t\>//gec<left><left><left><left>
 
         nnoremap <leader>v/ :%S///gn<left><left><left><left>
     else
@@ -1293,18 +1293,18 @@ if 1 " custom key mapping
             nnoremap / /\v
             nnoremap ? /\v
             nnoremap <leader>vr :.,$s/\v/gec<left><left><left><left>
-            xnoremap <leader>vr "zy:.,$s/\v<c-r>z//gec<left><left><left><left>
+            xnoremap <leader>vr "ty:.,$s/\v<c-r>t//gec<left><left><left><left>
             nnoremap <leader>zr :.,$s/\v/gec<left><left><left><left><<c-r><c-w>>/
-            xnoremap <leader>zr "zy:.,$s/\v<<c-r>z>//gec<left><left><left><left>
+            xnoremap <leader>zr "ty:.,$s/\v<<c-r>t>//gec<left><left><left><left>
 
             nnoremap <leader>v/ :%s/\v//gn<left><left><left><left>
         else
             nnoremap / /
             nnoremap ? /
             nnoremap <leader>vr :.,$s//gec<left><left><left><left>
-            xnoremap <leader>vr "zy:.,$s/<c-r>z//gec<left><left><left><left>
+            xnoremap <leader>vr "ty:.,$s/<c-r>t//gec<left><left><left><left>
             nnoremap <leader>zr :.,$s//gec<left><left><left><left>\<<c-r><c-w>\>/
-            xnoremap <leader>zr "zy:.,$s/\<<c-r>z\>//gec<left><left><left><left>
+            xnoremap <leader>zr "ty:.,$s/\<<c-r>t\>//gec<left><left><left><left>
 
             nnoremap <leader>v/ :%s///gn<left><left><left><left>
         endif
@@ -1404,14 +1404,14 @@ if 1 " common settings
     endfunction
     nnoremap zb :call ZF_Setting_ToggleSearch()<cr>
     nnoremap zn viw<esc>b/<c-r><c-w><cr>N
-    xnoremap zn "zy/<c-r>z<cr>N
+    xnoremap zn "ty/<c-r>t<cr>N
     nnoremap zm viw<esc>b/\<<c-r><c-w>\><cr>N
-    xnoremap zm "zy/\<<c-r>z\><cr>N
+    xnoremap zm "ty/\<<c-r>t\><cr>N
 
     nnoremap z/n viw<esc>b:%s/<c-r><c-w>//gn<cr>``
-    xnoremap z/n "zy:%s/<c-r>z//gn<cr>``
+    xnoremap z/n "ty:%s/<c-r>t//gn<cr>``
     nnoremap z/m viw<esc>b:%s/\<<c-r><c-w>\>//gn<cr>``
-    xnoremap z/m "zy:%s/\<<c-r>z\>//gn<cr>``
+    xnoremap z/m "ty:%s/\<<c-r>t\>//gn<cr>``
     " tab and indent
     set expandtab
     set shiftwidth=4
