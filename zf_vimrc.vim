@@ -769,6 +769,7 @@ if g:zf_no_plugin!=1
         if g:plugin_ZFVimEscape_vim==1
             Plugin 'ZSaberLv0/ZFVimEscape'
             vnoremap <leader>ce <esc>:call ZF_VimEscape()<cr>
+            nnoremap <leader>ce ggvG$<esc>:call ZF_VimEscape()<cr>
         endif
         " ==================================================
         if !exists("g:plugin_ZFVimFoldBlock")
