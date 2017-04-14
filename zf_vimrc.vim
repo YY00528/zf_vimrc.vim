@@ -162,6 +162,15 @@ if g:zf_no_plugin!=1
             augroup END
         endif
         " ==================================================
+        if !exists("g:plugin_asyncrun_vim")
+            let g:plugin_asyncrun_vim=1
+        endif
+        if g:plugin_asyncrun_vim==1
+            Plugin 'skywind3000/asyncrun.vim'
+        endif
+        nnoremap <leader>va :AsyncRun<space>
+        let g:asyncrun_exit='echo "AsyncRun " . g:asyncrun_status . ": " . g:asyncrun_code'
+        " ==================================================
         if !exists("g:plugin_auto_mkdir")
             let g:plugin_auto_mkdir=1
         endif
