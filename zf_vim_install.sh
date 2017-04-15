@@ -31,21 +31,27 @@ grep -wq "zf_vimrc.vim" $_vimrc && _exist=1 || _exist=0
 
 if test "x$_exist" = "x0"; then
     echo "" >> $_vimrc
-    echo "# if any weird problem occurred, uncomment one of these:" >> $_vimrc
-    echo "#" >> $_vimrc
-    echo "# set shell=cmd.exe" >> $_vimrc
-    echo "# set shellcmdflag=/c" >> $_vimrc
-    echo "#" >> $_vimrc
-    echo "# set shell=bash" >> $_vimrc
-    echo "# set shellcmdflag=-c" >> $_vimrc
-    echo "#" >> $_vimrc
+
+    echo "\" if any weird problem occurred, uncomment one of these:" >> $_vimrc
+    echo "\"" >> $_vimrc
+    echo "\" set shell=cmd.exe" >> $_vimrc
+    echo "\" set shellcmdflag=/c" >> $_vimrc
+    echo "\"" >> $_vimrc
+    echo "\" set shell=bash" >> $_vimrc
+    echo "\" set shellcmdflag=-c" >> $_vimrc
+    echo "\"" >> $_vimrc
 
     _isCygwin=0
     uname | grep -iq "cygwin" && _isCygwin=1 || _isCygwin=0
     if test "x$_isCygwin" = "x1"; then
         echo "set shell=bash" >> $_vimrc
         echo "set shellcmdflag=-c" >> $_vimrc
+        echo "" >> $_vimrc
     fi
+
+    echo "\" if your terminal support 256 color, uncomment this for better color" >> $_vimrc
+    echo "\" let g:zf_colorscheme_256=1" >> $_vimrc
+    echo "" >> $_vimrc
 
     echo "source \~/zf_vimrc.vim" >> $_vimrc
 fi
