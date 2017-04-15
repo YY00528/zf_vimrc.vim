@@ -92,7 +92,50 @@ which is self described
         the default config may suit most case, modify it if necessary
 
 
-# use in vim simulation plugins of IDE
+# platform spec
+
+## cygwin
+
+when used under different version of cygwin, you should concern these settings if weird problem occurred:
+
+```
+set shell=cmd.exe
+set shellcmdflag=/c
+```
+
+or
+
+```
+set shell=bash
+set shellcmdflag=-c
+```
+
+set it directly to `.vimrc`, choose the right one for you
+
+
+## Android's VimTouch
+
+* `VimTouch Full Runtime` is also required
+* the vim config is placed under `/data/data/net.momodalo.app.vimtouch/files/.vimrc`
+* you should manually copy all settings from other platform to VimTouch's folder,
+    the result folder tree should looks like:
+
+    ```
+    /data/data/net.momodalo.app.vimtouch/files/
+        .vim/
+            bundle/
+                ...
+        .vimrc
+        zf_vimrc.vim
+    ```
+
+* `othree/xml.vim` won't work on VimTouch, disable it manually by:
+
+    ```
+    let g:plugin_xml_vim=0
+    ```
+
+## for simulation plugins of IDE
 
 ```
 let g:zf_fakevim=1
