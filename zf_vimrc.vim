@@ -20,6 +20,8 @@ if 1 " global settings
     endif
     if g:zf_windows!=1 && g:zf_mac!=1
         let g:zf_linux=1
+    elseif g:zf_linux==1
+        let g:zf_windows=0
     endif
 
     if !exists("g:zf_fakevim")
