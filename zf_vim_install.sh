@@ -39,6 +39,14 @@ if test "x$_exist" = "x0"; then
     echo "# set shell=bash" >> $_vimrc
     echo "# set shellcmdflag=-c" >> $_vimrc
     echo "#" >> $_vimrc
+
+    _isCygwin=0
+    uname | grep -iq "cygwin" && _isCygwin=1 || _isCygwin=0
+    if test "x$_isCygwin" = "x1"; then
+        echo "set shell=bash" >> $_vimrc
+        echo "set shellcmdflag=-c" >> $_vimrc
+    fi
+
     echo "source \~/zf_vimrc.vim" >> $_vimrc
 fi
 
