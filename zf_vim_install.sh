@@ -34,6 +34,9 @@ if test "x$_exist" = "x0"; then
     echo "source \~/zf_vimrc.vim" >> $_vimrc
 fi
 
+git config --global core.autocrlf false
+git config --global core.safecrlf true
+
 echo "updating zf_vimrc..."
 _tmpdir="_zf_vimrc_tmp_"
 git clone https://github.com/ZSaberLv0/zf_vimrc.vim.git $_tmpdir
@@ -47,9 +50,7 @@ fi
 
 vim +PluginUpdate +qall
 
-echo ""
-echo "update complete"
-echo ""
-
 cd "$_old_dir"
+
+vim
 
