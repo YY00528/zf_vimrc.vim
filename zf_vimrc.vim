@@ -1598,7 +1598,6 @@ if 1 " local env setting
     if g:zf_windows==1
         " use cmd.exe for most compatibility
         set shell=cmd.exe
-        set shellcmdflag=/c
         " have shellslash for convenient when editing code,
         " may break something while using other plugins,
         " disable it manually if need
