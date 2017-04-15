@@ -31,6 +31,14 @@ grep -wq "zf_vimrc.vim" $_vimrc && _exist=1 || _exist=0
 
 if test "x$_exist" = "x0"; then
     echo "" >> $_vimrc
+    echo "# if any weird problem occurred, uncomment one of these:" >> $_vimrc
+    echo "#" >> $_vimrc
+    echo "# set shell=cmd.exe" >> $_vimrc
+    echo "# set shellcmdflag=/c" >> $_vimrc
+    echo "#" >> $_vimrc
+    echo "# set shell=bash" >> $_vimrc
+    echo "# set shellcmdflag=-c" >> $_vimrc
+    echo "#" >> $_vimrc
     echo "source \~/zf_vimrc.vim" >> $_vimrc
 fi
 
