@@ -9,10 +9,12 @@ if 1 " global settings
     endif
     let g:zf_mac=0
     if(has("unix"))
-        silent! let s:uname=system("uname")
-        if s:uname=="Darwin\n"
-            let g:zf_mac=1
-        endif
+        try
+            silent! let s:uname=system("uname")
+            if s:uname=="Darwin\n"
+                let g:zf_mac=1
+            endif
+        endtry
     endif
     let g:zf_linux=0
     if(has("unix"))
@@ -413,11 +415,13 @@ if g:zf_no_plugin!=1
                 endif
             endfunction
             command! -nargs=+ ZFGrepExt :call ZF_Plugin_easygrep_pcregrep(<q-args>)
-            if match(system('pcregrep --version'), '[0-9]\+\.[0-9]\+') < 0
-                nnoremap <leader>vge :echo 'pcregrep not installed'<cr>
-            else
-                nnoremap <leader>vge :ZFGrepExt<space>
-            endif
+            try
+                if match(system('pcregrep --version'), '[0-9]\+\.[0-9]\+') < 0
+                    nnoremap <leader>vge :echo 'pcregrep not installed'<cr>
+                else
+                    nnoremap <leader>vge :ZFGrepExt<space>
+                endif
+            endtry
         endif
         " ==================================================
         if !exists("g:plugin_vim_easymotion")
