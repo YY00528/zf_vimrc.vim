@@ -945,6 +945,12 @@ if g:zf_no_plugin!=1
                     endif
                 elseif g:zf_mac==1
                     let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+                elseif filereadable('/usr/lib/libclang.a')
+                            \ || filereadable('/usr/lib/libclang.so')
+                            \ || filereadable('/usr/lib/libclang.dll')
+                            \ || filereadable('/usr/lib/libclang.dll.a')
+                            \ || filereadable('/usr/lib/libclang.dll.so')
+                    let g:clang_library_path='/usr/lib'
                 else
                     let g:clang_library_path='/usr/local/lib'
                 endif
