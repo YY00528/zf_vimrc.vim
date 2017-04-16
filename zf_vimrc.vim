@@ -1218,8 +1218,8 @@ if 1 " custom key mapping
     nnoremap WU :resize<cr>
     nnoremap WW <c-w>w
     nnoremap WN <c-w>=
-    nnoremap Wh 10<c-w><
-    nnoremap Wl 10<c-w>>
+    nnoremap Wh 30<c-w><
+    nnoremap Wl 30<c-w>>
     nnoremap Wj 10<c-w>+
     nnoremap Wk 10<c-w>-
     " fold
