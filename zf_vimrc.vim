@@ -448,7 +448,7 @@ if g:zf_no_plugin!=1
             let g:easytags_resolve_links=1
             let g:easytags_suppress_ctags_warning=1
             " must not match wildignore
-            let g:easytags_file='~/.vim_cache/.easytags'
+            let g:easytags_file='~/.vim_cache/.vim_tags'
             let g:ZF_Plugin_EasyTagsEnabled=1
             function! ZF_Plugin_EasyTagsOff()
                 if g:ZF_Plugin_EasyTagsEnabled==0
@@ -876,7 +876,7 @@ if g:zf_no_plugin!=1
             nnoremap <leader>ctagg :call ZF_TagsFileGlobal()<cr>
             nnoremap <leader>ctaga :call ZF_TagsFileGlobalAdd()<cr>
             nnoremap <leader>ctagr :call ZF_TagsFileRemove()<cr>
-            nnoremap <leader>ctagv :edit $HOME/.vim_cache/.easytags<cr>
+            nnoremap <leader>ctagv :edit $HOME/.vim_cache/.vim_tags<cr>
         endif
         " ==================================================
         if !exists("g:plugin_ZFVimUtil")
