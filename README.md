@@ -20,8 +20,23 @@ may work: (search and see `g:zf_fakevim`)
 * XCode's XVim (not recommended, some action have unexpected behavior)
 
 
-for me, I use this config mainly for `C/C++` and `markdown` development,
+for me, I use this config mainly for `C/C++` `markdown` `PHP` development,
 as well as for default text editor and log viewer
+
+
+# main usage habits difference compared with common config
+
+* `<leader>` is single quote `'`
+
+    each leader keymap has these prefix to prevent conflict with other config
+
+    * `<leader>v` : main prefix, perform actions that are not descructive
+    * `<leader>c` : descructive actions, such as modify text or file directly
+    * `<leader>z` : secondary prefix, additions to `<leader>v`
+
+* many keymap with letters `A~Z a~z`, less keymap with `ctrl`, non with `alt` or `meta`
+* `q` `<space>` `jk` mapped as `<esc>`
+* `Q` to record macro and `M` to replay macro, to simplify macro usage, only one macro is supported
 
 
 # quick install
@@ -30,6 +45,9 @@ if you have `curl`, `git`, `vim` installed, here's a very simple command to inst
 
 ```
 curl zsaber.com/vim | sh
+
+# or, run the install script directly
+sh zf_vim_install.sh
 ```
 
 after installed, you may use `<leader>vimru` to update with this repo
@@ -134,6 +152,9 @@ set it directly to `.vimrc`, choose the right one for you
     ```
     let g:plugin_xml_vim=0
     ```
+
+**Note: vimrc may or may not work under Android 5 or above, reason unknown,
+    this is VimTouch's problem, not this repo's problem**
 
 ## for simulation plugins of IDE
 
