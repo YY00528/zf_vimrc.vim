@@ -24,7 +24,7 @@ for me, I use this config mainly for `C/C++` `markdown` `PHP` development,
 as well as for default text editor and log viewer
 
 
-# main usage habits difference compared with common config
+# main usage habits difference
 
 * `<leader>` is single quote `'`
 
