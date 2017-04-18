@@ -754,9 +754,8 @@ if g:zf_no_plugin!=1
         if g:plugin_vimim==1
             Plugin 'ZSaberLv0/VimIM'
             let g:Vimim_map='no-gi'
-            let g:Vimim_cloud='baidu'
             let g:Vimim_punctuation=0
-            let g:Vimim_toggle=g:Vimim_cloud.',pinyin'
+            let g:Vimim_toggle='pinyin,baidu'
             nnoremap <silent> ;; i<C-R>=g:Vimim_chinese()<CR><Esc>l
             inoremap <silent> ;; <C-R>=g:Vimim_chinese()<CR>
             nnoremap <silent> ;: i<C-R>=g:Vimim_onekey()<CR><Esc>l
