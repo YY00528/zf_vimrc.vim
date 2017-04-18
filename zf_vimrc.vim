@@ -758,7 +758,7 @@ if g:zf_no_plugin!=1
             let g:Vimim_punctuation=0
             let g:Vimim_toggle='pinyin,'.g:Vimim_cloud
             nnoremap <silent> ;; i<C-R>=g:Vimim_chinese()<CR><Esc>l
-            inoremap <unique> ;; <C-R>=g:Vimim_chinese()<CR>
+            inoremap <silent> ;; <C-R>=g:Vimim_chinese()<CR>
             nnoremap <silent> ;: i<C-R>=g:Vimim_onekey()<CR><Esc>l
             inoremap <silent> ;: <C-R>=g:Vimim_onekey()<CR>
         endif
