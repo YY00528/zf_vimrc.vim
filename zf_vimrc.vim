@@ -768,7 +768,6 @@ if g:zf_no_plugin!=1
                 endif
             endfunction
             nnoremap <silent> ;, :call ZF_Plugin_VimIM_edit_dict()<cr>
-            inoremap <silent> ;, <esc>:call ZF_Plugin_VimIM_edit_dict()<cr>
         endif
         " ==================================================
         if !exists("g:plugin_wildfire_vim")
