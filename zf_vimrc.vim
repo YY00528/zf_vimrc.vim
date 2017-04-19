@@ -760,6 +760,15 @@ if g:zf_no_plugin!=1
             inoremap <silent> ;; <C-R>=g:Vimim_chinese()<CR>
             nnoremap <silent> ;: i<C-R>=g:Vimim_onekey()<CR><Esc>l
             inoremap <silent> ;: <C-R>=g:Vimim_onekey()<CR>
+            function! ZF_Plugin_VimIM_edit_dict()
+                if !empty(globpath(&rtp, 'plugin/vimim.baidu.txt'))
+                    execute 'edit ' . globpath(&rtp, 'plugin/vimim.baidu.txt')
+                else
+                    echo 'dict file "plugin/vimim.baidu.txt" not exist'
+                endif
+            endfunction
+            nnoremap <silent> ;, :call ZF_Plugin_VimIM_edit_dict()<cr>
+            inoremap <silent> ;, <esc>:call ZF_Plugin_VimIM_edit_dict()<cr>
         endif
         " ==================================================
         if !exists("g:plugin_wildfire_vim")
