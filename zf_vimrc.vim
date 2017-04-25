@@ -1525,6 +1525,7 @@ if 1 " common settings
         set foldminlines=0
         set foldlevel=128
         set foldmethod=manual
+        normal! zE
     endfunction
     augroup ZF_setting_fold
         call ZF_setting_fold_action()
