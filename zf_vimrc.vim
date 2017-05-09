@@ -1600,14 +1600,14 @@ endif " common settings
 " ==================================================
 if 1 " plugin themes
     " plugin colors must be set after colorscheme
-    highlight ZFTabInactive guibg=White guifg=Black
-    highlight ZFTabInactive ctermbg=White ctermfg=Black
-    highlight ZFTabInactiveModified guibg=White guifg=Red
-    highlight ZFTabInactiveModified ctermbg=White ctermfg=Red
-    highlight ZFTabActive guibg=LightGreen guifg=Black
-    highlight ZFTabActive ctermbg=LightGreen ctermfg=Black
-    highlight ZFTabActiveModified guibg=LightGreen guifg=Red
-    highlight ZFTabActiveModified ctermbg=LightGreen ctermfg=Red
+    highlight ZFTabInactive gui=bold guibg=White guifg=Black
+    highlight ZFTabInactive cterm=bold ctermbg=White ctermfg=Black
+    highlight ZFTabInactiveModified gui=bold guibg=White guifg=Red
+    highlight ZFTabInactiveModified cterm=bold ctermbg=White ctermfg=Red
+    highlight ZFTabActive gui=bold guibg=LightGreen guifg=Black
+    highlight ZFTabActive cterm=bold ctermbg=LightGreen ctermfg=Black
+    highlight ZFTabActiveModified gui=bold guibg=LightGreen guifg=Red
+    highlight ZFTabActiveModified cterm=bold ctermbg=LightGreen ctermfg=Red
 
     if exists("g:plugin_BufLine") && g:plugin_BufLine==1
         highlight link BufLineHidden ZFTabInactive
