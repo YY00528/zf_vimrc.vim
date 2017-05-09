@@ -204,7 +204,7 @@ if g:zf_no_plugin!=1
         endif
         " ==================================================
         if !exists("g:plugin_BufLine")
-            let g:plugin_BufLine=1
+            let g:plugin_BufLine=0
         endif
         if g:plugin_BufLine==1
             Plugin 'BufLine'
@@ -219,6 +219,15 @@ if g:zf_no_plugin!=1
         if g:plugin_BufOnly_vim==1
             Plugin 'BufOnly.vim'
             nnoremap X :BufOnly<cr>
+        endif
+        " ==================================================
+        if !exists("g:plugin_vim_buftabline")
+            let g:plugin_vim_buftabline=1
+        endif
+        if g:plugin_vim_buftabline==1
+            Plugin 'ap/vim-buftabline'
+            let g:buftabline_numbers=1
+            let g:buftabline_indicators=1
         endif
         " ==================================================
         if !exists("g:plugin_ctrlp_vim")
@@ -1600,14 +1609,14 @@ if 1 " plugin themes
     highlight ZFTabActiveModified guibg=LightGreen guifg=Red
     highlight ZFTabActiveModified ctermbg=LightGreen ctermfg=Red
 
-    if exists("g:plugin_minibufexpl_vim") && g:plugin_minibufexpl_vim==1
-        let g:did_minibufexplorer_syntax_inits=1
-        highlight link MBENormal ZFTabInactive
-        highlight link MBEChanged ZFTabInactiveModified
-        highlight link MBEVisibleNormal ZFTabInactive
-        highlight link MBEVisibleChanged ZFTabInactiveModified
-        highlight link MBEVisibleActiveNormal ZFTabActive
-        highlight link MBEVisibleActiveChanged ZFTabActiveModified
+    if exists("g:plugin_BufLine") && g:plugin_BufLine==1
+        highlight link BufLineHidden ZFTabInactive
+        highlight link BufLineHiddenModified ZFTabInactiveModified
+        highlight link BufLineInactive ZFTabInactive
+        highlight link BufLineInactiveModified ZFTabInactiveModified
+        highlight link BufLineActive ZFTabActive
+        highlight link BufLineActiveModified ZFTabActiveModified
+        highlight link BufLineArrow ZFTabInactive
     endif
     if exists("g:plugin_BufLine") && g:plugin_BufLine==1
         highlight link BufLineHidden ZFTabInactive
@@ -1617,6 +1626,12 @@ if 1 " plugin themes
         highlight link BufLineActive ZFTabActive
         highlight link BufLineActiveModified ZFTabActiveModified
         highlight link BufLineArrow ZFTabInactive
+    endif
+    if exists("g:plugin_vim_buftabline") && g:plugin_vim_buftabline==1
+        highlight link BufTabLineCurrent ZFTabActive
+        highlight link BufTabLineActive ZFTabActive
+        highlight link BufTabLineHidden ZFTabInactive
+        highlight link BufTabLineFill ZFTabInactive
     endif
     if exists("g:plugin_vim_easymotion") && g:plugin_vim_easymotion==1
         highlight EasyMotionTarget guibg=NONE guifg=White
