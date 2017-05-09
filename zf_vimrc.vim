@@ -203,6 +203,16 @@ if g:zf_no_plugin!=1
             let g:AutoPairsMultilineClose=0
         endif
         " ==================================================
+        if !exists("g:plugin_BufLine")
+            let g:plugin_BufLine=1
+        endif
+        if g:plugin_BufLine==1
+            Plugin 'BufLine'
+            let g:bufline_left_arrow=''
+            let g:bufline_right_arrow=''
+            let g:bufline_modified_sign=''
+        endif
+        " ==================================================
         if !exists("g:plugin_BufOnly_vim")
             let g:plugin_BufOnly_vim=1
         endif
@@ -582,7 +592,7 @@ if g:zf_no_plugin!=1
         endif
         " ==================================================
         if !exists("g:plugin_minibufexpl_vim")
-            let g:plugin_minibufexpl_vim=1
+            let g:plugin_minibufexpl_vim=0
         endif
         if g:plugin_minibufexpl_vim==1
             Plugin 'weynhamz/vim-plugin-minibufexpl'
@@ -1581,18 +1591,32 @@ endif " common settings
 " ==================================================
 if 1 " plugin themes
     " plugin colors must be set after colorscheme
+    highlight ZFTabInactive guibg=White guifg=Black
+    highlight ZFTabInactive ctermbg=White ctermfg=Black
+    highlight ZFTabInactiveModified guibg=White guifg=Red
+    highlight ZFTabInactiveModified ctermbg=White ctermfg=Red
+    highlight ZFTabActive guibg=LightGreen guifg=Black
+    highlight ZFTabActive ctermbg=LightGreen ctermfg=Black
+    highlight ZFTabActiveModified guibg=LightGreen guifg=Red
+    highlight ZFTabActiveModified ctermbg=LightGreen ctermfg=Red
+
     if exists("g:plugin_minibufexpl_vim") && g:plugin_minibufexpl_vim==1
         let g:did_minibufexplorer_syntax_inits=1
-        highlight MBENormal guibg=White guifg=Black
-        highlight MBENormal ctermbg=White ctermfg=Black
-        highlight MBEChanged guibg=White guifg=Red
-        highlight MBEChanged ctermbg=White ctermfg=Red
-        highlight link MBEVisibleNormal MBENormal
-        highlight link MBEVisibleChanged MBEChanged
-        highlight MBEVisibleActiveNormal guibg=LightGreen guifg=Black
-        highlight MBEVisibleActiveNormal ctermbg=LightGreen ctermfg=Black
-        highlight MBEVisibleActiveChanged guibg=LightGreen guifg=Red
-        highlight MBEVisibleActiveChanged ctermbg=LightGreen ctermfg=Red
+        highlight link MBENormal ZFTabInactive
+        highlight link MBEChanged ZFTabInactiveModified
+        highlight link MBEVisibleNormal ZFTabInactive
+        highlight link MBEVisibleChanged ZFTabInactiveModified
+        highlight link MBEVisibleActiveNormal ZFTabActive
+        highlight link MBEVisibleActiveChanged ZFTabActiveModified
+    endif
+    if exists("g:plugin_BufLine") && g:plugin_BufLine==1
+        highlight link BufLineHidden ZFTabInactive
+        highlight link BufLineHiddenModified ZFTabInactiveModified
+        highlight link BufLineInactive ZFTabInactive
+        highlight link BufLineInactiveModified ZFTabInactiveModified
+        highlight link BufLineActive ZFTabActive
+        highlight link BufLineActiveModified ZFTabActiveModified
+        highlight link BufLineArrow ZFTabInactive
     endif
     if exists("g:plugin_vim_easymotion") && g:plugin_vim_easymotion==1
         highlight EasyMotionTarget guibg=NONE guifg=White
