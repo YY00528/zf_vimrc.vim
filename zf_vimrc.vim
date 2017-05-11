@@ -1328,6 +1328,9 @@ if 1 " custom key mapping
     "     .*    : .*?
     "     .+    : .+?
     "     .{n,} : .{n,}?
+    "
+    " match line except contains zzz:
+    "     ^(?!.*zzz).*$
     if exists("g:plugin_eregex_vim") && g:plugin_eregex_vim==1
         nnoremap / /\v
         nnoremap ? :M/
